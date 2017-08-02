@@ -57,7 +57,7 @@ module.exports = function (config, windowParams) {
       function onCallback(url) {
         var url_parts = nodeUrl.parse(url, true);
         var query = url_parts.query;
-        var code = query.code;
+        var code = query.code ? query.code : (queryString.decode(query.response)).code;
         var error = query.error;
 
         if (error !== undefined) {
